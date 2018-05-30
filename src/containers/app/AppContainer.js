@@ -14,6 +14,13 @@ import OpenLatticeLogo from '../../assets/images/logo_and_name.png';
 import StyledButton from '../../components/buttons/StyledButton';
 import * as Routes from '../../core/router/Routes';
 
+
+/*
+ * components
+ */
+import EntitiesContainer from '../entities/entities_container';
+
+
 // const { logout } = AuthActionFactory;
 
 /*
@@ -84,11 +91,11 @@ const AppContainer = (props :Props) => (
     <AppHeaderOuterWrapper>
       <AppHeaderInnerWrapper>
         <Logo src={OpenLatticeLogo} height="50" />
-        <Title>OpenLattice React App</Title>
+        <Title>Visualize EDM</Title>
       </AppHeaderInnerWrapper>
     </AppHeaderOuterWrapper>
     <Switch>
-      <Route path={Routes.ROOT} component={HelloWorldComponent} />
+      <Route path={Routes.ROOT} component={EntitiesContainer} />
       <Redirect to={Routes.ROOT} />
     </Switch>
   </AppWrapper>

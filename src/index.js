@@ -17,6 +17,11 @@ import AppContainer from './containers/app/AppContainer';
 import initializeReduxStore from './core/redux/ReduxStore';
 import initializeRouterHistory from './core/router/RouterHistory';
 import * as Routes from './core/router/Routes';
+import {
+  fetchEntities,
+  fetchAssosiations,
+  fetchProperties
+} from './actions/edm_actions';
 
 // injected by Webpack.DefinePlugin
 // declare var __AUTH0_CLIENT_ID__ :string;
@@ -73,14 +78,23 @@ injectGlobal`
  * !!! MUST HAPPEN FIRST !!!
  */
 
-const routerHistory = initializeRouterHistory();
-const reduxStore = initializeReduxStore(routerHistory);
+document.addEventListener('DOMContentLoaded', () => {
+  const routerHistory = initializeRouterHistory();
+  const reduxStore = initializeReduxStore(routerHistory);
 
-ReactDOM.render(
-  <Provider store={reduxStore}>
-    <ConnectedRouter history={routerHistory}>
-      <AppContainer path={Routes.ROOT} />
-    </ConnectedRouter>
-  </Provider>,
-  document.getElementById('app')
-);
+  // Testing
+
+  window.fetchEntities = fetchEntities;
+  window.fetchAssosiations = fetchAssosiations;
+  window.fetchProperties = fetchProperties;
+  window.dispatch = reduxStore.dispatch;
+
+  ReactDOM.render(
+    <Provider store={reduxStore}>
+      <ConnectedRouter history={routerHistory}>
+        <AppContainer path={Routes.ROOT} />
+      </ConnectedRouter>
+    </Provider>,
+    document.getElementById('app')
+  );
+});

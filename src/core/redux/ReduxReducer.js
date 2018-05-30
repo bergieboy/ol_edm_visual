@@ -1,12 +1,8 @@
-/*
- * @flow
- */
+import { combineReducers } from 'redux';
+import edmReducer from '../../containers/edm/edm_reducer';
 
-// import { AuthReducer } from 'lattice-auth';
-import { combineReducers } from 'redux-immutable';
+const reduxReducer = combineReducers({
+  edm: edmReducer
+});
 
-export default function reduxReducer() {
-
-  return combineReducers({
-  });
-}
+export default reduxReducer;

@@ -5,10 +5,7 @@
 import React from 'react';
 
 import styled from 'styled-components';
-// import { AuthActionFactory } from 'lattice-auth';
-import { connect } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router';
-import { bindActionCreators } from 'redux';
 
 import OpenLatticeLogo from '../../assets/images/logo_and_name.png';
 import StyledButton from '../../components/buttons/StyledButton';
@@ -18,10 +15,7 @@ import * as Routes from '../../core/router/Routes';
 /*
  * components
  */
-import EntitiesContainer from '../entities/entities_container';
-
-
-// const { logout } = AuthActionFactory;
+import EDMContainer from '../edm/edm_container';
 
 /*
  * styled components
@@ -71,22 +65,8 @@ const Logo = styled.img`
   left: 50px;
 `;
 
-/*
- * types
- */
 
-type Props = {
-  actions :{
-    login :() => void;
-    logout :() => void;
-  };
-};
-
-const HelloWorldComponent = () => (
-  <div>Hello, World!</div>
-);
-
-const AppContainer = (props :Props) => (
+const AppContainer = () => (
   <AppWrapper>
     <AppHeaderOuterWrapper>
       <AppHeaderInnerWrapper>
@@ -95,17 +75,10 @@ const AppContainer = (props :Props) => (
       </AppHeaderInnerWrapper>
     </AppHeaderOuterWrapper>
     <Switch>
-      <Route path={Routes.ROOT} component={EntitiesContainer} />
+      <Route path={Routes.ROOT} component={EDMContainer} />
       <Redirect to={Routes.ROOT} />
     </Switch>
   </AppWrapper>
 );
 
-function mapDispatchToProps(dispatch :Function) :Object {
-
-  return {
-    actions: bindActionCreators({}, dispatch)
-  };
-}
-
-export default connect(null, mapDispatchToProps)(AppContainer);
+export default AppContainer;

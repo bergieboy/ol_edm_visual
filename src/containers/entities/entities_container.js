@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import EntityListItem from './entity_list_item';
 
-class EntitiesContainer extends Component {
 
+// import { fetchEntities } from '../../actions/edm_actions';
+//
+// const mapStateToProps = state => ({
+//   entities: state
+// });
+//
+// const mapDispatchToProps = dispatch => ({
+//   fetchEntities: () => dispatch(fetchEntities())
+// });
+
+
+class EntitiesContainer extends Component {
   constructor() {
     super();
     this.state = {
@@ -16,7 +28,9 @@ class EntitiesContainer extends Component {
       .then(json => this.setState({ entities: json }));
   }
 
+
   render() {
+
     const entities = this.state.entities.map(entity =>
       <EntityListItem key={entity.id} entity={entity} />);
 
@@ -33,9 +47,10 @@ class EntitiesContainer extends Component {
     });
 
     return (
-      <ul>{entities}</ul>
+      <div className="list">{entities}</div>
     );
   }
 }
 
+// export default connect(mapStateToProps, mapDispatchToProps)(EntitiesContainer);
 export default EntitiesContainer;

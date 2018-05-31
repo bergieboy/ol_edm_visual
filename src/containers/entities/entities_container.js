@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import EntityListItem from './entity_list_item';
+import styled from 'styled-components';
 
+import EntityListItem from './entity_list_item';
 
 import { fetchEntities } from '../../actions/edm_actions';
 
@@ -12,6 +13,19 @@ const mapStateToProps = ({ edm }) => ({
 const mapDispatchToProps = dispatch => ({
   fetchEntities: () => dispatch(fetchEntities())
 });
+
+const ListItems = styled.div`
+  margin: 1%;
+  background-color: #fefefe;
+  border: 1px solid #c5d5e5;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  height:auto;
+  max-height: 58vh;
+  overflow-y:scroll;
+  width: calc(100vw - 100vh);
+`;
 
 
 class EntitiesContainer extends Component {
@@ -47,7 +61,9 @@ class EntitiesContainer extends Component {
     });
 
     return (
-      <div className="list">{entityListItems}</div>
+      <ListItems>
+        {entityListItems}
+      </ListItems>
     );
   }
 }

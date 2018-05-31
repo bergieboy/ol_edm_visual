@@ -29,16 +29,16 @@ const ListItem = styled(NavLink).attrs({
     overflow: hidden;
     text-overflow: ellipsis;
     span {
-      font-weight: bolder;
+      font-weight: bold;
     }
   }
 `;
 
-const PropertyListItem = ({ property }) => (
-  <ListItem to={`/propertyTypes/${property.id}`}>
-    <article><span>FQN</span>: {property.type.namespace}.{property.type.name}</article>
-    <article><span>{property.title}</span></article>
+const AssociationListItem = ({ association }) => (
+  <ListItem to={`/associationTypes/${association.entityType.id}`}>
+    <article><span>FQN</span>: {association.entityType.type.namespace}.{association.entityType.type.name}</article>
+    <article><span>{association.entityType.title}</span></article>
   </ListItem>
 );
 
-export default PropertyListItem;
+export default AssociationListItem;

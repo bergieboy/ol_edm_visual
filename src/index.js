@@ -19,7 +19,7 @@ import initializeRouterHistory from './core/router/RouterHistory';
 import * as Routes from './core/router/Routes';
 import {
   fetchEntities,
-  fetchAssosiations,
+  fetchAssociations,
   fetchProperties
 } from './actions/edm_actions';
 
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Testing
 
   window.fetchEntities = fetchEntities;
-  window.fetchAssosiations = fetchAssosiations;
+  window.fetchAssociations = fetchAssociations;
   window.fetchProperties = fetchProperties;
   window.dispatch = reduxStore.dispatch;
   window.getState = reduxStore.getState;

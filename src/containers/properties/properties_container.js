@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
+
 import PropertyListItem from './property_list_item';
 
 import { fetchProperties } from '../../actions/edm_actions';
+
+const ListItems = styled.div`
+  margin: 1%;
+  background-color: #fefefe;
+  border: 1px solid #c5d5e5;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  height:auto;
+  max-height: 58vh;
+  overflow-y:scroll;
+  width: calc(100vw - 100vh);
+`;
 
 const mapStateToProps = ({ edm }) => ({
   properties: Object.keys(edm.properties).map((id => edm.properties[id]))
@@ -45,7 +60,9 @@ class PropertiesContainer extends Component {
     });
 
     return (
-      <div className="list">{propertyListItems}</div>
+      <ListItems>
+        {propertyListItems}
+      </ListItems>
     );
   }
 }

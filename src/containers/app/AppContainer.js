@@ -27,6 +27,7 @@ const AppWrapper = styled.div`
   height: 100%;
   min-width: 800px;
   position: relative;
+  overflow-y: hidden;
 `;
 
 const AppHeaderOuterWrapper = styled.header`

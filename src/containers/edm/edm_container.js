@@ -1,10 +1,10 @@
 import React from 'react';
-import { NavLink, Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { NavLink, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import * as Routes from '../../core/router/Routes';
 
 
-import AssosiationsContainer from '../assosiations/assosiations_container';
+import AssociationsContainer from '../associations/associations_container';
 import EntitiesContainer from '../entities/entities_container';
 import PropertiesContainer from '../properties/properties_container';
 
@@ -22,41 +22,27 @@ const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   flex: 0 0 auto;
-  width: 33%;
+  width: calc(100vw - 100vh);
+  margin: 1%;
 `;
 
 const NavTab = styled(NavLink).attrs({
   activeClassName: SUB_NAV_LINK_ACTIVE_CLASSNAME
 })`
   align-items: center;
-  border-bottom: 1px solid transparent;
+  border: 1px solid transparent;
   color: #113355;
   display: flex;
-  width: 100%;
-  height: 10vh;
+  height: 8vh;
   padding: 5%;
-  text-align: center;
   text-decoration: none;
   &:hover {
    cursor: pointer;
   }
   &.${SUB_NAV_LINK_ACTIVE_CLASSNAME} {
-    text-align: center;
     border: 1px solid #7a52ea;
     color: #7a52ea;
   }
-`;
-
-const ListItems = styled.nav`
-  background-color: #fefefe;
-  border: 1px solid #c5d5e5;
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 auto;
-  height:auto;
-  max-height: 60vh;
-  overflow-y:scroll;
-  width: 33%;
 `;
 
 const EDMContainer = () => (
@@ -66,13 +52,11 @@ const EDMContainer = () => (
       <NavTab to={Routes.ENTITY_TYPES}>EntityTypes</NavTab>
       <NavTab to={Routes.ASSOCIATION_TYPES}>AssociationTypes</NavTab>
     </Nav>
-    <ListItems>
-      <Switch>
-        <Route exact path="/propertyTypes" component={PropertiesContainer} />
-        <Route exact path="/entityTypes" component={EntitiesContainer} />
-        <Route exact path="/associationTypes" component={AssosiationsContainer} />
-      </Switch>
-    </ListItems>
+    <Switch>
+      <Route path="/propertyTypes" component={PropertiesContainer} />
+      <Route path="/entityTypes" component={EntitiesContainer} />
+      <Route path="/associationTypes" component={AssociationsContainer} />
+    </Switch>
   </EDMContainerWrapper>
 );
 

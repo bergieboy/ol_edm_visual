@@ -11,7 +11,6 @@ import PropertiesContainer from '../properties/properties_container';
 const SUB_NAV_LINK_ACTIVE_CLASSNAME :string = 'sub-nav-link-active';
 
 const EDMContainerWrapper = styled.div`
-  display: flex;
   flex: 0 auto;
   margin: 0;
   padding: 0;
@@ -23,7 +22,6 @@ const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   flex: 0 0 auto;
-  height: 100%;
   width: 33%;
 `;
 
@@ -35,7 +33,7 @@ const NavTab = styled(NavLink).attrs({
   color: #113355;
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 10vh;
   padding: 5%;
   text-align: center;
   text-decoration: none;
@@ -49,6 +47,18 @@ const NavTab = styled(NavLink).attrs({
   }
 `;
 
+const ListItems = styled.nav`
+  background-color: #fefefe;
+  border: 1px solid #c5d5e5;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  height:auto;
+  max-height: 60vh;
+  overflow-y:scroll;
+  width: 33%;
+`;
+
 const EDMContainer = () => (
   <EDMContainerWrapper>
     <Nav>
@@ -56,11 +66,13 @@ const EDMContainer = () => (
       <NavTab to={Routes.ENTITY_TYPES}>EntityTypes</NavTab>
       <NavTab to={Routes.ASSOCIATION_TYPES}>AssociationTypes</NavTab>
     </Nav>
-    <Switch>
-      <Route exact path="/propertyTypes" component={PropertiesContainer} />
-      <Route exact path="/entityTypes" component={EntitiesContainer} />
-      <Route exact path="/associationTypes" component={AssosiationsContainer} />
-    </Switch>
+    <ListItems>
+      <Switch>
+        <Route exact path="/propertyTypes" component={PropertiesContainer} />
+        <Route exact path="/entityTypes" component={EntitiesContainer} />
+        <Route exact path="/associationTypes" component={AssosiationsContainer} />
+      </Switch>
+    </ListItems>
   </EDMContainerWrapper>
 );
 

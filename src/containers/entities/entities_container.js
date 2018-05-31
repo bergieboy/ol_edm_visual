@@ -3,38 +3,38 @@ import { connect } from 'react-redux';
 import EntityListItem from './entity_list_item';
 
 
-// import { fetchEntities } from '../../actions/edm_actions';
-//
-// const mapStateToProps = state => ({
-//   entities: state
-// });
-//
-// const mapDispatchToProps = dispatch => ({
-//   fetchEntities: () => dispatch(fetchEntities())
-// });
+import { fetchEntities } from '../../actions/edm_actions';
+
+const mapStateToProps = ({ edm }) => ({
+  entities: Object.keys(edm.entities).map((id => edm.entities[id]))
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchEntities: () => dispatch(fetchEntities())
+});
 
 
 class EntitiesContainer extends Component {
-  constructor() {
-    super();
-    this.state = {
-      entities: []
-    };
-  }
 
   componentDidMount() {
-    fetch('https://api.openlattice.com/datastore/edm/entity/type')
-      .then(res => res.json())
-      .then(json => this.setState({ entities: json }));
+    this.props.fetchEntities();
   }
 
 
   render() {
 
-    const entities = this.state.entities.map(entity =>
+    const { entities } = this.props;
+
+    if (!entities[0]) {
+      return (
+        <div>Loading...</div>
+      );
+    }
+
+    const entityListItems = this.props.entities.map(entity =>
       <EntityListItem key={entity.id} entity={entity} />);
 
-    entities.sort((a, b) => {
+    entityListItems.sort((a, b) => {
       const nameA = a.props.entity.type.namespace.toUpperCase();
       const nameB = b.props.entity.type.namespace.toUpperCase();
       if (nameA < nameB) {
@@ -47,10 +47,9 @@ class EntitiesContainer extends Component {
     });
 
     return (
-      <div className="list">{entities}</div>
+      <div className="list">{entityListItems}</div>
     );
   }
 }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(EntitiesContainer);
-export default EntitiesContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(EntitiesContainer);

@@ -1,26 +1,39 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import AssosiationListItem from './assosiation_list_item';
+
+import { fetchAssosiations } from '../../actions/edm_actions';
+
+
+const mapStateToProps = ({ edm }) => ({
+  assosiations: Object.keys(edm.assosiations).map((id => edm.assosiations[id]))
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchAssosiations: () => dispatch(fetchAssosiations())
+});
+
 
 class AssosiationsContainer extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      assosiations: []
-    };
-  }
-
   componentDidMount() {
-    fetch('https://api.openlattice.com/datastore/edm/association/type')
-      .then(res => res.json())
-      .then(json => this.setState({ assosiations: json }));
+    this.props.fetchAssosiations();
   }
 
   render() {
-    const assosiations = this.state.assosiations.map(assosiation =>
-      <AssosiationListItem key={assosiation.id} assosiation={assosiation} />);
 
-    assosiations.sort((a, b) => {
+    const { assosiations } = this.props;
+
+    if (!assosiations[0]) {
+      return (
+        <div>Loading...</div>
+      );
+    }
+    const assosiationListItems = this.props.assosiations.map(assosiation =>
+      <AssosiationListItem key={assosiation.entityType.id} assosiation={assosiation} />);
+
+    assosiationListItems.sort((a, b) => {
       const nameA = a.props.assosiation.entityType.type.namespace.toUpperCase();
       const nameB = b.props.assosiation.entityType.type.namespace.toUpperCase();
       if (nameA < nameB) {
@@ -33,9 +46,9 @@ class AssosiationsContainer extends Component {
     });
 
     return (
-      <div className="list">{assosiations}</div>
+      <div className="list">{assosiationListItems}</div>
     );
   }
 }
 
-export default AssosiationsContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(AssosiationsContainer);

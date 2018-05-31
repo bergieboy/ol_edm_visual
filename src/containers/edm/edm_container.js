@@ -12,14 +12,14 @@ const SUB_NAV_LINK_ACTIVE_CLASSNAME :string = 'sub-nav-link-active';
 
 const EDMContainerWrapper = styled.div`
   display: flex;
-  flex: 1 0 auto;
+  flex: 0 auto;
   margin: 0;
   padding: 0;
 `;
 
 const Nav = styled.nav`
   background-color: #fefefe;
-  border-bottom: 1px solid #c5d5e5;
+  border: 1px solid #c5d5e5;
   display: flex;
   flex-direction: column;
   flex: 0 0 auto;
@@ -34,15 +34,17 @@ const NavTab = styled(NavLink).attrs({
   border-bottom: 1px solid transparent;
   color: #113355;
   display: flex;
+  width: 100%;
   height: 100%;
-  margin: 0 25px;
+  padding: 5%;
   text-align: center;
   text-decoration: none;
   &:hover {
    cursor: pointer;
   }
   &.${SUB_NAV_LINK_ACTIVE_CLASSNAME} {
-    border-bottom: 1px solid #7a52ea;
+    text-align: center;
+    border: 1px solid #7a52ea;
     color: #7a52ea;
   }
 `;

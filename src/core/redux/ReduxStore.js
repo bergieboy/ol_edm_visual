@@ -47,10 +47,9 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import reduxReducer from './ReduxReducer';
 
-const initializeReduxStore = (preloadedState = {}) => (
+const initializeReduxStore = () => (
   createStore(
     reduxReducer,
-    preloadedState,
     applyMiddleware(thunk, logger)
   )
 );

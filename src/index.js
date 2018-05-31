@@ -88,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchAssosiations = fetchAssosiations;
   window.fetchProperties = fetchProperties;
   window.dispatch = reduxStore.dispatch;
+  window.getState = reduxStore.getState;
 
   ReactDOM.render(
     <Provider store={reduxStore}>

@@ -2,6 +2,8 @@
 
 For this coding challenge I built a web app that navigates the OpenLattice Entity Data Model. This application utilizes the api endpoints provided by OpenLattice to create a React/Redux, frontend-only, web application. My actions were broken up into six separate creators, allowing me to fetch all or just one of Property Types, Entity Types, or Association Types depending on which component is being rendered. The application is made up of two main components. There is a `ListItems` component for Property Types, Entity Types, and Association Types, and a Single `EDMDetails` component, which renders the details of whichever item is selected on the  `ListItems` component. The `Nav` component allows you to navigate between List Items for each Data Type.
 
+![alt text](https://github.com/bergieboy/ol_edm_visual/blob/master/src/assets/images/ol_edm.gif)
+
 Something I would have done differently would have be to create a separate details component for each Data Type. I believe this would have made my code more modular, and easier to read for other developers. If I were given more time, I would have liked to organize `ListItems` in an color-coded 'accordion-style' list by `namespace` and provide a search bar to make navigation easier for the user. I would also have liked to create a D3 visualization that mapped associations between entity types.
 
 This app was not designed to be viewed on mobile devices.

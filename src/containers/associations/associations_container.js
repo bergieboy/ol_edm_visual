@@ -7,17 +7,17 @@ import AssociationListItem from './association_list_item';
 import { fetchAssociations } from '../../actions/edm_actions';
 
 const ListItems = styled.div`
-  margin: 1%;
-  background-color: #fefefe;
-  border: 1px solid #c5d5e5;
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 auto;
-  height:auto;
-  max-height: 58vh;
-  width: 33.33vw;
-  overflow-y:scroll;
-  width: calc(100vw - 100vh);
+margin: 3%;
+background-color: #fefefe;
+border: 1px solid #c5d5e5;
+display: flex;
+flex-direction: column;
+flex: 0 0 auto;
+height:auto;
+max-height: 53.5vh;
+width: 33.33vw;
+overflow-y:scroll;
+width: calc(100vw - 100vh);
 `;
 
 const mapStateToProps = ({ edm }) => ({

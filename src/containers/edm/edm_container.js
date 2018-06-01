@@ -29,7 +29,7 @@ const Nav = styled.nav`
   flex-direction: column;
   flex: 0 0 auto;
   width: calc(100vw - 100vh);
-  margin: 1%;
+  margin: 3%;
 `;
 
 const NavTab = styled(NavLink).attrs({

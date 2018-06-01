@@ -7,7 +7,7 @@ import EntityListItem from './entity_list_item';
 import { fetchEntities } from '../../actions/edm_actions';
 
 const mapStateToProps = ({ edm }) => ({
-  entities: Object.keys(edm.entities).map((id => edm.entities[id]))
+  entities: Object.keys(edm.entities).map((id => edm.entities[id])),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -15,17 +15,17 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const ListItems = styled.div`
-  margin: 1%;
-  background-color: #fefefe;
-  border: 1px solid #c5d5e5;
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 auto;
-  height:auto;
-  width: 33.33vw;
-  max-height: 58vh;
-  overflow-y:scroll;
-  width: calc(100vw - 100vh);
+margin: 3%;
+background-color: #fefefe;
+border: 1px solid #c5d5e5;
+display: flex;
+flex-direction: column;
+flex: 0 0 auto;
+height:auto;
+max-height: 53.5vh;
+width: 33.33vw;
+overflow-y:scroll;
+width: calc(100vw - 100vh);
 `;
 
 

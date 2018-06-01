@@ -7,14 +7,14 @@ import PropertyListItem from './property_list_item';
 import { fetchProperties } from '../../actions/edm_actions';
 
 const ListItems = styled.div`
-  margin: 1%;
+  margin: 3%;
   background-color: #fefefe;
   border: 1px solid #c5d5e5;
   display: flex;
   flex-direction: column;
   flex: 0 0 auto;
-  height:auto;
-  max-height: 58vh;
+  height: auto;
+  max-height: 55vh;
   width: 33.33vw;
   overflow-y:scroll;
   width: calc(100vw - 100vh);

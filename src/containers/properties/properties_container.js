@@ -15,6 +15,7 @@ const ListItems = styled.div`
   flex: 0 0 auto;
   height:auto;
   max-height: 58vh;
+  width: 33.33vw;
   overflow-y:scroll;
   width: calc(100vw - 100vh);
 `;

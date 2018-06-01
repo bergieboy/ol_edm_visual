@@ -1,6 +1,9 @@
 import merge from 'lodash/merge';
 
-import { RECEIVE_ENTITIES } from '../../actions/edm_actions';
+import {
+  RECEIVE_ENTITIES,
+  RECEIVE_ENTITY
+} from '../../actions/edm_actions';
 
 const entitiesReducer = (state = {}, action) => {
   Object.freeze(state);

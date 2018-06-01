@@ -1,12 +1,12 @@
 // FETCH ALL
 export const RECEIVE_ENTITIES = 'RECEIVE_ENTITIES';
-export const RECEIVE_ASSOSIATIONS = 'RECEIVE_ASSOSIATIONS';
+export const RECEIVE_ASSOCIATIONS = 'RECEIVE_ASSOCIATIONS';
 export const RECEIVE_PROPERTIES = 'RECEIVE_PROPERTIES';
 
 // FETCH SINGLE
-export const RECEIVE_ENTITY = 'RECEIVE_ENTITIES';
-export const RECEIVE_ASSOSIATION = 'RECEIVE_ASSOSIATIONS';
-export const RECEIVE_PROPERTY = 'RECEIVE_PROPERTIES';
+export const RECEIVE_ENTITY = 'RECEIVE_ENTITY';
+export const RECEIVE_ASSOCIATION = 'RECEIVE_ASSOCIATION';
+export const RECEIVE_PROPERTY = 'RECEIVE_PROPERTY';
 
 const receiveEntities = entities => ({
   type: RECEIVE_ENTITIES,
@@ -14,7 +14,7 @@ const receiveEntities = entities => ({
 });
 
 const receiveAssociations = associations => ({
-  type: RECEIVE_ASSOSIATIONS,
+  type: RECEIVE_ASSOCIATIONS,
   associations
 });
 
@@ -29,7 +29,7 @@ const receiveEntity = entity => ({
 });
 
 const receiveAssociation = association => ({
-  type: RECEIVE_ASSOSIATION,
+  type: RECEIVE_ASSOCIATION,
   association
 });
 
@@ -57,19 +57,19 @@ export const fetchProperties = () => dispatch => (
 );
 
 export const fetchEntity = id => dispatch => (
-  fetch(`https://api.openlattice.com/datastore/edm/entity/type/${id}`)
+  fetch(id)
     .then(res => res.json())
     .then(entity => dispatch(receiveEntity(entity)))
 );
 
 export const fetchAssociation = id => dispatch => (
-  fetch(`https://api.openlattice.com/datastore/edm/association/type/${id}`)
+  fetch(id)
     .then(res => res.json())
     .then(association => dispatch(receiveAssociation(association)))
 );
 
 export const fetchProperty = id => dispatch => (
-  fetch(`https://api.openlattice.com/datastore/edm/property/type/${id}`)
+  fetch(id)
     .then(res => res.json())
     .then(property => dispatch(receiveProperty(property)))
 );

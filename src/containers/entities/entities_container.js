@@ -22,6 +22,7 @@ const ListItems = styled.div`
   flex-direction: column;
   flex: 0 0 auto;
   height:auto;
+  width: 33.33vw;
   max-height: 58vh;
   overflow-y:scroll;
   width: calc(100vw - 100vh);
@@ -36,7 +37,6 @@ class EntitiesContainer extends Component {
 
 
   render() {
-
     const { entities } = this.props;
 
     if (!entities[0]) {

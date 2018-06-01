@@ -7,7 +7,6 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// import LatticeAuth from 'lattice-auth';
 import { normalize } from 'polished';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
@@ -17,21 +16,8 @@ import AppContainer from './containers/app/AppContainer';
 import initializeReduxStore from './core/redux/ReduxStore';
 import initializeRouterHistory from './core/router/RouterHistory';
 import * as Routes from './core/router/Routes';
-import {
-  fetchEntities,
-  fetchAssociations,
-  fetchProperties
-} from './actions/edm_actions';
 
-// injected by Webpack.DefinePlugin
-// declare var __AUTH0_CLIENT_ID__ :string;
-// declare var __AUTH0_DOMAIN__ :string;
 declare var __ENV_DEV__ :boolean;
-
-// const {
-//   AuthRoute,
-//   AuthUtils
-// } = LatticeAuth;
 
 /* eslint-disable */
 injectGlobal`${normalize()}`;
@@ -67,28 +53,9 @@ injectGlobal`
  * !!! MUST HAPPEN FIRST !!!
  */
 
-// LatticeAuth.configure({
-//   auth0ClientId: __AUTH0_CLIENT_ID__,
-//   auth0Domain: __AUTH0_DOMAIN__,
-//   authToken: AuthUtils.getAuthToken(),
-//   baseUrl: (__ENV_DEV__) ? 'localhost' : 'production'
-// });
-
-/*
- * !!! MUST HAPPEN FIRST !!!
- */
-
 document.addEventListener('DOMContentLoaded', () => {
   const routerHistory = initializeRouterHistory();
   const reduxStore = initializeReduxStore(routerHistory);
-
-  // Testing
-
-  window.fetchEntities = fetchEntities;
-  window.fetchAssociations = fetchAssociations;
-  window.fetchProperties = fetchProperties;
-  window.dispatch = reduxStore.dispatch;
-  window.getState = reduxStore.getState;
 
   ReactDOM.render(
     <Provider store={reduxStore}>

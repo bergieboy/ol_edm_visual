@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import PropertyListItem from './property_list_item';
 
-import { fetchProperties } from '../../actions/edm_actions';
+import { fetchProperties, fetchProperty } from '../../actions/edm_actions';
 
 const ListItems = styled.div`
   margin: 3%;
@@ -25,14 +25,18 @@ const mapStateToProps = ({ edm }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchProperties: () => dispatch(fetchProperties())
+  fetchProperties: () => dispatch(fetchProperties()),
+  fetchProperty: id => dispatch(fetchProperty(id))
 });
 
 
 class PropertiesContainer extends Component {
 
   componentDidMount() {
+    const pathId = this.props.match.params.id;
+    const propAdd = 'https://api.openlattice.com/datastore/edm/property/type/' + pathId;
     this.props.fetchProperties();
+    this.props.fetchProperty(propAdd);
   }
 
   render() {

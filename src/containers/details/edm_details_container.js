@@ -10,12 +10,9 @@ import EntityItemDetails from '../entities/entity_item_details';
 import AssociationItemDetails from '../associations/association_item_details';
 import PropertyItemDetails from '../properties/property_item_details';
 
-const mapStateToProps = ({ edm }) => {
-  console.log(edm);
-  return {
-    current: edm.current
-  }
-};
+const mapStateToProps = ({ edm }) => ({
+  current: edm.current
+});
 
 const mapDispatchToProps = dispatch => ({
   fetchEntity: id => dispatch(fetchEntity(id)),
@@ -55,10 +52,13 @@ class EDMDetail extends Component {
       const pathType = this.props.match.path;
       if (pathType === Routes.ENTITY_TYPES) {
         this.props.fetchEntity(entAdd);
+        this.props.fetchProperties();
       } else if (pathType === Routes.ASSOCIATION_TYPES) {
         this.props.fetchAssociation(assAdd);
+        this.props.fetchProperties();
       } else if (pathType === Routes.PROPERTY_TYPES) {
         this.props.fetchProperty(propAdd);
+        this.props.fetchProperties();
       }
     }
   }
@@ -78,7 +78,6 @@ class EDMDetail extends Component {
 
   render() {
     const { current } = this.props;
-    console.log(this.state);
 
     if (Object.keys(current).length === 0 && current.constructor === Object) {
       return (

@@ -18,7 +18,7 @@ const EDMContainerWrapper = styled.div`
   margin: 0;
   padding: 0;
   max-height: 100vh;
-  max-width: 33%;
+  max-width: 30vw;
   flex-wrap: wrap;
 `;
 

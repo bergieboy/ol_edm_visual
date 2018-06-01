@@ -20,18 +20,19 @@ const edmDetailsReducer = (state = {}, action) => {
     case RECEIVE_PROPERTY:
       return merge({}, action.property);
 
-    case RECEIVE_PROPERTIES:
+    case RECEIVE_PROPERTIES: {
       let newState = merge({}, state);
-      console.log(newState["entityType"]["properties"]);
-      if (newState["entityType"]) {
-        newState["entityType"]["properties"] = action.properties
-          .filter(property => (newState["entityType"]["properties"]).includes(property.id));
+      if (newState['entityType']) {
+        newState['entityType']['properties'] = action.properties
+          .filter(property => (newState['entityType']['properties']).includes(property.id));
+        return newState;
+      } else if (newState['properties']) {
+        newState['properties'] = action.properties
+          .filter(property => newState['properties'].includes(property.id));
         return newState;
       }
-      newState["properties"] = action.properties
-        .filter(property => newState["properties"].includes(property.id));
       return newState;
-
+    }
     default:
       return state;
   }

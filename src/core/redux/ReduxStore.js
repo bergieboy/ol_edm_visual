@@ -50,7 +50,7 @@ import reduxReducer from './ReduxReducer';
 const initializeReduxStore = () => (
   createStore(
     reduxReducer,
-    applyMiddleware(thunk, logger)
+    applyMiddleware(thunk)
   )
 );
 

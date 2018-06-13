@@ -51,13 +51,7 @@ class EntitiesContainer extends Component {
     entityListItems.sort((a, b) => {
       const nameA = a.props.entity.type.namespace.toUpperCase();
       const nameB = b.props.entity.type.namespace.toUpperCase();
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
-      return 0;
+      return nameA < nameB ? -1 : 1;
     });
 
     return (

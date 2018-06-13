@@ -55,13 +55,7 @@ class PropertiesContainer extends Component {
     propertyListItems.sort((a, b) => {
       const nameA = a.props.property.type.namespace.toUpperCase();
       const nameB = b.props.property.type.namespace.toUpperCase();
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
-      return 0;
+      return nameA < nameB ? -1 : 1;
     });
 
     return (

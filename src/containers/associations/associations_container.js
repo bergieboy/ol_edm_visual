@@ -50,13 +50,7 @@ class AssociationsContainer extends Component {
     associationListItems.sort((a, b) => {
       const nameA = a.props.association.entityType.type.namespace.toUpperCase();
       const nameB = b.props.association.entityType.type.namespace.toUpperCase();
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
-      return 0;
+      return nameA < nameB ? -1 : 1;
     });
 
     return (

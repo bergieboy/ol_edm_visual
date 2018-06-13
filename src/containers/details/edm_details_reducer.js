@@ -14,8 +14,10 @@ const edmDetailsReducer = (state = {}, action) => {
     case RECEIVE_ENTITY:
       return merge({}, action.entity);
 
-    case RECEIVE_ASSOCIATION:
-      return merge({}, action.association);
+    case RECEIVE_ASSOCIATION: {
+      let newState = merge({}, action.association);
+      return newState;
+    }
 
     case RECEIVE_PROPERTY:
       return merge({}, action.property);

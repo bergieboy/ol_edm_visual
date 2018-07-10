@@ -1,11 +1,10 @@
 import merge from 'lodash/merge';
 
-import { RECEIVE_PROPERTIES } from '../../actions/edm_actions';
-
 import {
   RECEIVE_ENTITY,
   RECEIVE_ASSOCIATION,
-  RECEIVE_PROPERTY
+  RECEIVE_PROPERTY,
+  RECEIVE_PROPERTIES
 } from '../../actions/edm_actions';
 
 const edmDetailsReducer = (state = {}, action) => {
@@ -15,7 +14,7 @@ const edmDetailsReducer = (state = {}, action) => {
       return merge({}, action.entity);
 
     case RECEIVE_ASSOCIATION: {
-      let newState = merge({}, action.association);
+      const newState = merge({}, action.association);
       return newState;
     }
 
@@ -23,7 +22,7 @@ const edmDetailsReducer = (state = {}, action) => {
       return merge({}, action.property);
 
     case RECEIVE_PROPERTIES: {
-      let newState = merge({}, state);
+      const newState = merge({}, state);
       if (newState['entityType']) {
         newState['entityType']['properties'] = action.properties
           .filter(property => (newState['entityType']['properties']).includes(property.id));
